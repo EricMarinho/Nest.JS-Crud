@@ -1,19 +1,17 @@
 version: '3'
 services:
   postgres:
-    container_name: postgres_general
+    container_name: postgres_nestjscrud
     image: postgres:latest
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+    env_file:
+      - .env
     ports:
-      - '5433:5432'
+      - '5434:5432'
     volumes:
       - ./init:/docker-entrypoint-initdb.d
 
   redis:
-    container_name: redis_general
+    container_name: redis_nestjscrud
     image: redis:latest
     ports:
       - '6379:6379'
