@@ -1,9 +1,10 @@
-import { IsString, IsUUID } from "class-validator";
+import { IsOptional, IsString, IsUUID } from "class-validator";
 
 export class CreateCityDto {
     @IsString()
     name: string;
-    
+
     @IsUUID()
-    state_id: string;
+    @IsOptional()
+    state_id?: string;
 }

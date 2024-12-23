@@ -1,7 +1,7 @@
 
 import { Test } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { configOptions, configOptionsTesting } from 'ormconfig';
+import { configOptionsTesting } from 'ormconfig';
 
 export async function createDefaultModule(
     options: {

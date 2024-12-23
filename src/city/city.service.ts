@@ -33,12 +33,14 @@ export class CityService {
     )
   }
 
-  update(id: string, updateCityDto: UpdateCityDto) {
+  async update(id: string, updateCityDto: UpdateCityDto) {
     const data = this.cityRepository.create(updateCityDto);
-    return this.cityRepository.update({id}, data);
+    await this.cityRepository.update({id}, data);
+    return this.cityRepository.findOne({where: {id}});
   }
 
-  remove(id: string) {
-    return this.cityRepository.delete({id});
+  async remove(id: string) {
+    const data = await this.cityRepository.findOne({where: {id}});
+    return this.cityRepository.remove(data);
   }
 }

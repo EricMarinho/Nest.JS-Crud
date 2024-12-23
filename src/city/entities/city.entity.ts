@@ -16,7 +16,7 @@ export class CityEntity {
         @Column()
         name: string;
 
-        @Column()
+        @Column({nullable: true})
         state_id: string;
         
         @ManyToOne(() => StateEntity, state => state.cities)

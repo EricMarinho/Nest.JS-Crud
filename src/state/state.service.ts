@@ -26,12 +26,14 @@ export class StateService {
     return this.stateRepository.findOne({where: {id}});
   }
 
-  update(id: string, updateStateDto: UpdateStateDto) {
+  async update(id: string, updateStateDto: UpdateStateDto) {
     const data = this.stateRepository.create(updateStateDto);
-    return this.stateRepository.update({id}, data);
+    await this.stateRepository.update({id}, data);
+    return this.stateRepository.findOne({where: {id}});
   }
 
-  remove(id: string) {
-    return this.stateRepository.delete({id});
+  async remove(id: string) {
+    const state = await this.stateRepository.findOne({where: {id}});
+    return this.stateRepository.remove(state);
   }
 }

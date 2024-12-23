@@ -1,9 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user.entity';
-import { configOptions } from 'ormconfig';
 import { createDefaultModule } from '@src/common/utils/test.utils';
 import { DataSource } from 'typeorm';
 import { createUser } from '@src/common/user/user.utils';
@@ -78,6 +76,7 @@ describe('UserController', () => {
     expect(updatedUser.email).toEqual('email@gmail.com');
     expect(updatedUser.password).toEqual('password');
     expect(updatedUser.role).toEqual('admin');
+    expect(updatedUser.city_id).toBeNull();
   });   
 
   it('should delete a user', async () => {
